@@ -14,7 +14,7 @@ import {
   CheckIcon
 } from "lucide-react";
 import { useState } from "react";
-import Negro from "../imports/Negro/Negro";
+import Logo from "../imports/Logo/Logo";
 import sofiaPhoto from "../imports/sofia.png";
 import santiagoPhoto from "../imports/santiago.png";
 
@@ -127,8 +127,8 @@ export default function App() {
       <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="h-10 w-32 scale-y-[-1] [&_path]:!fill-[#1A2B44]">
-              <Negro />
+            <div className="h-10 w-32 [&_path]:!fill-[#1A2B44]">
+              <Logo />
             </div>
           </div>
 
@@ -596,8 +596,8 @@ export default function App() {
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
-              <div className="h-8 w-28 mb-4 brightness-0 invert scale-y-[-1]">
-                <Negro />
+              <div className="h-10 w-32 mb-4 brightness-0 invert">
+                <Logo />
               </div>
               <p className="text-white/60">
                 Gestión inteligente de inventario de alimentos para un hogar más eficiente.
