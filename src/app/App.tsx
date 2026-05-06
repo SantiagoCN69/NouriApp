@@ -13,14 +13,39 @@ import {
   ZapIcon,
   CheckIcon
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Logo from "../imports/Logo/Logo";
+import TermsAndConditions from "./TermsAndConditions";
+import About from "./About";
+import Contact from "./Contact";
+import Privacy from "./Privacy";
 import sofiaPhoto from "../imports/sofia.png";
 import santiagoPhoto from "../imports/santiago.png";
 
 export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [pricingModalOpen, setPricingModalOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState<'home' | 'terms' | 'about' | 'contact' | 'privacy'>('home');
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentPage]);
+
+  if (currentPage === 'terms') {
+    return <TermsAndConditions onBack={() => setCurrentPage('home')} />;
+  }
+
+  if (currentPage === 'about') {
+    return <About onBack={() => setCurrentPage('home')} />;
+  }
+
+  if (currentPage === 'contact') {
+    return <Contact onBack={() => setCurrentPage('home')} />;
+  }
+
+  if (currentPage === 'privacy') {
+    return <Privacy onBack={() => setCurrentPage('home')} />;
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -604,25 +629,63 @@ export default function App() {
               </p>
             </div>
             <div>
-              <h4 className="mb-4">Producto</h4>
+              <h4 className="mb-4 text-white font-semibold">Producto</h4>
               <ul className="space-y-2 text-white/60">
-                <li><a href="#" className="hover:text-white transition">Características</a></li>
-                <li><a href="#" onClick={() => setPricingModalOpen(true)} className="hover:text-white transition">Precios</a></li>
-                <li><a href="#" className="hover:text-white transition">Seguridad</a></li>
+                <li>
+                  <a href="#caracteristicas" className="hover:text-white transition font-semibold">
+                    Características
+                  </a>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => setPricingModalOpen(true)} 
+                    className="hover:text-white transition"
+                  >
+                    Precios
+                  </button>
+                </li>
               </ul>
             </div>
             <div>
-              <h4 className="mb-4">Compañía</h4>
+              <h4 className="mb-4 text-white font-semibold">Compañía</h4>
               <ul className="space-y-2 text-white/60">
-                <li><a href="#" className="hover:text-white transition">Sobre nosotros</a></li>
-                <li><a href="#" className="hover:text-white transition">Contacto</a></li>
+                <li>
+                  <button 
+                    onClick={() => setCurrentPage('about')} 
+                    className="hover:text-white transition"
+                  >
+                    Sobre nosotros
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => setCurrentPage('contact')} 
+                    className="hover:text-white transition"
+                  >
+                    Contacto
+                  </button>
+                </li>
               </ul>
             </div>
             <div>
-              <h4 className="mb-4">Legal</h4>
+              <h4 className="mb-4 text-white font-semibold">Legal</h4>
               <ul className="space-y-2 text-white/60">
-                <li><a href="#" className="hover:text-white transition">Privacidad</a></li>
-                <li><a href="#" className="hover:text-white transition">Términos</a></li>
+                <li>
+                  <button 
+                    onClick={() => setCurrentPage('privacy')} 
+                    className="hover:text-white transition"
+                  >
+                    Privacidad
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => setCurrentPage('terms')} 
+                    className="hover:text-white transition"
+                  >
+                    Términos
+                  </button>
+                </li>
               </ul>
             </div>
           </div>
