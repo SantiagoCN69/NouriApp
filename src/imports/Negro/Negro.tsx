@@ -2,8 +2,8 @@ import svgPaths from "./svg-iot85za4ei";
 
 export default function Negro() {
   return (
-    <div className="relative size-full scale-y-[-1]" data-name="Negro">
-      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="xMidYMid meet" viewBox="0 0 3844 1263">
+    <div className="relative size-full" data-name="Negro">
+      <svg className="absolute block inset-0 " fill="none" preserveAspectRatio="none" viewBox="0 0 3844 1263">
         <g id="Negro">
           <path d={svgPaths.p2fa85180} fill="var(--fill-0, black)" id="Vector" style={{ fill: "black", fillOpacity: "1" }} />
           <path d={svgPaths.p1e74cb00} fill="var(--fill-0, black)" id="Vector_2" style={{ fill: "black", fillOpacity: "1" }} />
