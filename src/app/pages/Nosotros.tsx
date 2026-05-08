@@ -1,3 +1,4 @@
+/// <reference types="vite/client" />
 import { motion } from "motion/react";
 import { HeartIcon, RocketIcon, LightbulbIcon, TargetIcon } from "lucide-react";
 import sofiaPhoto from "../../imports/sofia.png";

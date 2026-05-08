@@ -33,14 +33,14 @@ export default function Footer() {
             <h4 className="mb-4">Compañía</h4>
             <ul className="space-y-2 text-white/60">
               <li>
-                <Link to="/nosotros" className="hover:text-white transition">
+                <a href="/nosotros" className="hover:text-white transition">
                   Sobre nosotros
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to="/contacto" className="hover:text-white transition">
+                <a href="/contacto" className="hover:text-white transition">
                   Contacto
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
@@ -48,14 +48,14 @@ export default function Footer() {
             <h4 className="mb-4">Legal</h4>
             <ul className="space-y-2 text-white/60">
               <li>
-                <Link to="/privacidad" className="hover:text-white transition">
+                <a href="/privacidad" className="hover:text-white transition">
                   Privacidad
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to="/terminos" className="hover:text-white transition">
+                <a href="/terminos" className="hover:text-white transition">
                   Términos
-                </Link>
+                </a>
               </li>
             </ul>
           </div>

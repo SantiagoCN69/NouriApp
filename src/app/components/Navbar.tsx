@@ -31,9 +31,9 @@ export default function Navbar({ onOpenPricing }: NavbarProps) {
           <a href="/#caracteristicas" className="text-gray-600 hover:text-[#1A2B44] transition">
             Características
           </a>
-          <Link to="/nosotros" className="text-gray-600 hover:text-[#1A2B44] transition">
+          <a href="/nosotros" className="text-gray-600 hover:text-[#1A2B44] transition">
             Quiénes Somos
-          </Link>
+          </a>
           <button
             onClick={onOpenPricing}
             className="text-gray-600 hover:text-[#1A2B44] transition"
@@ -106,13 +106,13 @@ export default function Navbar({ onOpenPricing }: NavbarProps) {
               >
                 Características
               </a>
-              <Link
-                to="/nosotros"
+              <a
+                href="/nosotros"
                 className="text-gray-600 hover:text-[#1A2B44] transition py-3 px-4 rounded-lg"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Quiénes Somos
-              </Link>
+              </a>
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
