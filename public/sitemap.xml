@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://nouri.app/</loc>
+    <loc>https://nourioficial.netlify.app/</loc>
     <lastmod>2024-05-08</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://nouri.app/nosotros</loc>
+    <loc>https://nourioficial.netlify.app/nosotros</loc>
     <lastmod>2024-05-08</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nouri.app/contacto</loc>
+    <loc>https://nourioficial.netlify.app/contacto</loc>
     <lastmod>2024-05-08</lastmod>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nouri.app/privacidad</loc>
+    <loc>https://nourioficial.netlify.app/privacidad</loc>
     <lastmod>2024-05-08</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://nouri.app/terminos</loc>
+    <loc>https://nourioficial.netlify.app/terminos</loc>
     <lastmod>2024-05-08</lastmod>
     <priority>0.5</priority>
   </url>
