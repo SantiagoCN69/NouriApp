@@ -1,19 +1,9 @@
 import { motion } from "motion/react";
 import { MailIcon, MessageSquareIcon, SendIcon } from "lucide-react";
-import { useState } from "react";
+import { useForm, ValidationError } from '@formspree/react';
 
 export default function Contacto() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-  };
+  const [state, handleSubmit] = useForm("xpqbkolj");
 
   return (
     <div className="pt-18">
@@ -102,76 +92,104 @@ export default function Contacto() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
+              className="min-h-full flex items-center justify-center"
             >
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-gray-700 mb-2">
-                    Nombre
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1A2B44] focus:border-transparent transition"
-                    placeholder="Tu nombre"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-gray-700 mb-2">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1A2B44] focus:border-transparent transition"
-                    placeholder="tu@email.com"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="subject" className="block text-gray-700 mb-2">
-                    Asunto
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    value={formData.subject}
-                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1A2B44] focus:border-transparent transition"
-                    placeholder="¿En qué podemos ayudarte?"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-gray-700 mb-2">
-                    Mensaje
-                  </label>
-                  <textarea
-                    id="message"
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    rows={6}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1A2B44] focus:border-transparent transition resize-none"
-                    placeholder="Cuéntanos más detalles..."
-                    required
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full bg-[#1A2B44] text-white px-8 py-4 rounded-full hover:bg-[#2A3B54] transition shadow-lg flex items-center justify-center gap-2"
+              {state.succeeded ? (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-center w-full"
                 >
-                  <SendIcon size={20} />
-                  Enviar mensaje
-                </button>
-              </form>
+                  <div className="w-20 h-20 mx-auto mb-6 bg-green-100 rounded-full flex items-center justify-center">
+                    <SendIcon className="text-green-600" size={40} />
+                  </div>
+                  <h3 className="text-2xl font-semibold text-green-600 mb-4">
+                    ¡Mensaje enviado con éxito!
+                  </h3>
+                  <p className="text-gray-600">
+                    Gracias por contactarnos. Te responderemos lo más pronto posible.
+                  </p>
+                </motion.div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6 w-full">
+                  <div>
+                    <label htmlFor="name" className="block text-gray-700 mb-2">
+                      Nombre
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1A2B44] focus:border-transparent transition"
+                      placeholder="Tu nombre"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="email" className="block text-gray-700 mb-2">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1A2B44] focus:border-transparent transition"
+                      placeholder="tu@email.com"
+                      required
+                    />
+                    <ValidationError 
+                      prefix="Email" 
+                      field="email"
+                      errors={state.errors}
+                      className="text-red-500 text-sm mt-1"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="subject" className="block text-gray-700 mb-2">
+                      Asunto
+                    </label>
+                    <input
+                      type="text"
+                      id="subject"
+                      name="subject"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1A2B44] focus:border-transparent transition"
+                      placeholder="¿En qué podemos ayudarte?"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="message" className="block text-gray-700 mb-2">
+                      Mensaje
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows={6}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1A2B44] focus:border-transparent transition resize-none"
+                      placeholder="Cuéntanos más detalles..."
+                      required
+                    />
+                    <ValidationError 
+                      prefix="Message" 
+                      field="message"
+                      errors={state.errors}
+                      className="text-red-500 text-sm mt-1"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={state.submitting}
+                    className="w-full bg-[#1A2B44] text-white px-8 py-4 rounded-full hover:bg-[#2A3B54] transition shadow-lg flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <SendIcon size={20} />
+                    {state.submitting ? "Enviando..." : "Enviar mensaje"}
+                  </button>
+                </form>
+              )}
             </motion.div>
           </div>
         </div>
