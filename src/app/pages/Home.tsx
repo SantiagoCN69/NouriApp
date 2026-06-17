@@ -50,7 +50,7 @@ export default function Home() {
                 <button
                   onClick={() =>
                     window.open(
-                      "https://www.figma.com/proto/9NCls7dV0SlF1UO3k048IN/App-comida?node-id=67-317&viewport=-108%2C418%2C0.41&t=4WCnj0dimnplS4uk-1&scaling=min-zoom&content-scaling=fixed&page-id=67%3A2",
+                      "https://www.figma.com/proto/9NCls7dV0SlF1UO3k048IN/Nouri?node-id=418-3215&p=f&t=CpXlDIe1fWOoaMzr-1&scaling=scale-down&content-scaling=fixed&page-id=169%3A2&starting-point-node-id=418%3A3215",
                       "_blank"
                     )
                   }
@@ -59,68 +59,16 @@ export default function Home() {
                   Ver demo
                 </button>
               </div>
-              <div className="flex gap-8 mt-12">
-                <div>
-                  <div className="text-3xl text-[#1A2B44] mb-1">50K+</div>
-                  <div className="text-gray-600">Usuarios activos</div>
-                </div>
-                <div>
-                  <div className="text-3xl text-[#1A2B44] mb-1">30%</div>
-                  <div className="text-gray-600">Ahorro promedio</div>
-                </div>
-                <div>
-                  <div className="text-3xl text-[#1A2B44] mb-1">4.8⭐</div>
-                  <div className="text-gray-600">Valoración</div>
-                </div>
-              </div>
+
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative"
+              className="relative flex justify-center"
             >
-              <div className="bg-gradient-to-br from-[#1A2B44] to-[#2A4464] rounded-3xl p-8 shadow-2xl">
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-4">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
-                      <RefrigeratorIcon className="text-white" size={24} />
-                    </div>
-                    <div>
-                      <div className="text-white/80 text-sm">Mi Inventario</div>
-                      <div className="text-white">23 productos</div>
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    {["Leche - Vence en 2 días", "Yogurt - Vence mañana", "Queso - Vence en 5 días"].map(
-                      (item, i) => (
-                        <div
-                          key={i}
-                          className="bg-white/10 rounded-lg p-3 text-white/90 text-sm flex items-center gap-2"
-                        >
-                          <div
-                            className={`w-2 h-2 rounded-full ${
-                              i === 1 ? "bg-red-400" : "bg-green-400"
-                            }`}
-                          ></div>
-                          {item}
-                        </div>
-                      )
-                    )}
-                  </div>
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                    <div className="text-white/60 text-sm mb-1">Próximos a vencer</div>
-                    <div className="text-white text-2xl">3</div>
-                  </div>
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                    <div className="text-white/60 text-sm mb-1">Ahorro este mes</div>
-                    <div className="text-white text-2xl">$45</div>
-                  </div>
-                </div>
-              </div>
+              <img src="/04. Home.png" alt="Consumir pronto" className="hidden lg:block w-full max-w-xs rounded-3xl shadow-2xl" />
             </motion.div>
           </div>
         </div>
@@ -329,11 +277,7 @@ export default function Home() {
               { icon: <CalendarIcon size={24} />, title: "Control de fechas" },
               { icon: <BellIcon size={24} />, title: "Recordatorios" },
               { icon: <BarChart3Icon size={24} />, title: "Estadísticas" },
-              { icon: <RefrigeratorIcon size={24} />, title: "Multi-ubicación" },
-              { icon: <ShoppingCartIcon size={24} />, title: "Listas de compra" },
               { icon: <CheckCircle2Icon size={24} />, title: "Fácil de usar" },
-              { icon: <StarIcon size={24} />, title: "Recetas sugeridas" },
-              { icon: <TrendingDownIcon size={24} />, title: "Análisis ahorro" },
             ].map((feature, i) => (
               <motion.div
                 key={i}
@@ -389,28 +333,28 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl mb-4 text-[#1A2B44]">Lo que dicen nuestros usuarios</h2>
-            <p className="text-xl text-gray-600">Miles de familias ya están ahorrando con NOURI</p>
+            <h2 className="text-4xl mb-4 text-[#1A2B44]">Lo que dijeron al ver la demo</h2>
+            <p className="text-xl text-gray-600">Feedback de usuarios que probaron nuestro prototipo</p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                name: "María González",
-                role: "Madre de familia",
-                text: "Desde que uso NOURI, he reducido el desperdicio en casa un 60%. Ya no olvido productos en la nevera.",
+                name: "Laura Pérez",
+                role: "Usuario de demo",
+                text: "¡Me encanta lo fácil que es agregar productos! La interfaz es muy intuitiva y limpia.",
                 rating: 5,
               },
               {
-                name: "Carlos Ruiz",
-                role: "Profesional",
-                text: "Perfecto para mi estilo de vida ocupado. Las alertas me ayudan a planificar mis comidas y compras.",
+                name: "Roberto Sánchez",
+                role: "Usuario de demo",
+                text: "Las alertas de vencimiento son exactamente lo que necesito. Muy útil para la organización.",
                 rating: 5,
               },
               {
-                name: "Ana Martínez",
-                role: "Estudiante",
-                text: "Como estudiante, cada peso cuenta. NOURI me ayuda a ahorrar y a no desperdiciar comida.",
+                name: "Daniela Torres",
+                role: "Usuario de demo",
+                text: "El diseño es moderno y las funciones están bien pensadas. Definitivamente la usaría cuando esté disponible.",
                 rating: 5,
               },
             ].map((testimonial, i) => (
@@ -464,7 +408,7 @@ export default function Home() {
               <button
                 onClick={() =>
                   window.open(
-                    "https://www.figma.com/proto/9NCls7dV0SlF1UO3k048IN/App-comida?node-id=67-317&viewport=-108%2C418%2C0.41&t=4WCnj0dimnplS4uk-1&scaling=min-zoom&content-scaling=fixed&page-id=67%3A2",
+                    "https://www.figma.com/proto/9NCls7dV0SlF1UO3k048IN/Nouri?node-id=418-3215&p=f&t=CpXlDIe1fWOoaMzr-1&scaling=scale-down&content-scaling=fixed&page-id=169%3A2&starting-point-node-id=418%3A3215",
                     "_blank"
                   )
                 }

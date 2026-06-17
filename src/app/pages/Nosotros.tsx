@@ -194,7 +194,7 @@ export default function Nosotros() {
               <button
                 onClick={() =>
                   window.open(
-                    "https://www.figma.com/proto/9NCls7dV0SlF1UO3k048IN/App-comida?node-id=67-317&viewport=-108%2C418%2C0.41&t=4WCnj0dimnplS4uk-1&scaling=min-zoom&content-scaling=fixed&page-id=67%3A2",
+                    "https://www.figma.com/proto/9NCls7dV0SlF1UO3k048IN/Nouri?node-id=418-3215&p=f&t=CpXlDIe1fWOoaMzr-1&scaling=scale-down&content-scaling=fixed&page-id=169%3A2&starting-point-node-id=418%3A3215",
                     "_blank"
                   )
                 }
