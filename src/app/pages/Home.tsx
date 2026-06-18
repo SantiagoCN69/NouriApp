@@ -192,7 +192,7 @@ export default function Home() {
                 className="relative group"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-[#1A2B44]/5 to-[#2A4464]/5 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className={`relative bg-gradient-to-br ${problem.gradient} p-8 rounded-3xl shadow-sm border border-gray-100/50 hover:shadow-lg transition-all duration-300`}>
+                <div className={`relative h-full bg-gradient-to-br ${problem.gradient} p-8 rounded-3xl shadow-sm border border-gray-100/50 hover:shadow-lg transition-all duration-300`}>
                   <div className={`absolute top-4 right-4 w-20 h-20 ${problem.iconBg} rounded-full blur-2xl opacity-50`} />
                   <div className={`relative w-16 h-16 ${problem.iconBg} rounded-2xl flex items-center justify-center ${problem.iconColor} mb-6 group-hover:scale-110 transition-transform duration-300`}>
                     {problem.icon}

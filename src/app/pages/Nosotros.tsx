@@ -172,7 +172,7 @@ export default function Nosotros() {
                 className="relative group"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-[#1A2B44]/5 to-[#2A4464]/5 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative bg-white p-8 rounded-3xl shadow-sm border border-gray-100/50 hover:shadow-xl transition-all duration-300">
+                <div className="h-full relative bg-white p-8 rounded-3xl shadow-sm border border-gray-100/50 hover:shadow-xl transition-all duration-300">
                   <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-[#1A2B44]/10 to-[#2A4464]/10 rounded-2xl flex items-center justify-center text-[#1A2B44] group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                     {value.icon}
                   </div>
