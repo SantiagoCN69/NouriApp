@@ -41,11 +41,16 @@ export default function Home() {
               </motion.div>
               <h1 className="text-5xl lg:text-7xl mb-6 text-[#1A2B44] leading-tight font-semibold">
                 Controla tu inventario,{" "}
-                <span className="relative inline-block">
-                  evita desperdicios
-                  <svg className="absolute -bottom-2 left-0 w-full" height="8" viewBox="0 0 200 8" fill="none">
-                    <path d="M2 6C50 2 150 2 198 6" stroke="#2A4464" strokeWidth="3" strokeLinecap="round"/>
-                  </svg>
+                <span className="inline-block">
+                  evita{" "}
+                  <motion.span
+                    initial={{ scale: 1.3, opacity: 0, rotate: -5, color: "#EF4444" }}
+                    animate={{ scale: 1, opacity: 1, rotate: 0, color: "#1A2B44" }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="inline-block"
+                  >
+                    desperdicios
+                  </motion.span>
                 </span>
                 {" "}y ahorra
               </h1>
