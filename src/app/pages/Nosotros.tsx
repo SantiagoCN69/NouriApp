@@ -8,18 +8,32 @@ export default function Nosotros() {
   return (
     <div className="pt-18">
       {/* Hero */}
-      <section className="py-20 px-6 bg-gradient-to-br from-[#1A2B44] to-[#2A4464]">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="py-20 px-6 bg-gradient-to-br from-[#1A2B44] to-[#2A4464] relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2" />
+        
+        <div className="max-w-4xl mx-auto text-center relative">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <h1 className="text-5xl md:text-6xl mb-6 text-white leading-tight">
-              Nuestra Historia
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-5 py-2.5 rounded-full mb-8 border border-white/20">
+              <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
+              Nuestra historia
+            </div>
+            <h1 className="text-5xl md:text-7xl mb-6 text-white leading-tight font-semibold">
+              Dos estudiantes,{" "}
+              <span className="relative inline-block">
+                un sueño
+                <svg className="absolute -bottom-2 left-0 w-full" height="8" viewBox="0 0 200 8" fill="none">
+                  <path d="M2 6C50 2 150 2 198 6" stroke="white" strokeWidth="3" strokeLinecap="round" opacity="0.5"/>
+                </svg>
+              </span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 leading-relaxed">
-              Dos estudiantes con un sueño: crear tecnología que genere impacto real
+            <p className="text-xl md:text-2xl text-white/90 leading-relaxed max-w-2xl mx-auto">
+              Crear tecnología que genere impacto real en las personas y el planeta
             </p>
           </motion.div>
         </div>
@@ -54,20 +68,23 @@ export default function Nosotros() {
           {/* Fotos */}
           <div className="grid md:grid-cols-2 gap-12 mb-16">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-center"
+              transition={{ delay: 0.1, duration: 0.6 }}
+              className="text-center group"
             >
-              <div className="w-56 h-56 mx-auto mb-6 rounded-full overflow-hidden border-[#1A2B44]">
-                <img
-                  src={sofiaPhoto}
-                  alt="Sofía Alejandra Quiroga"
-                  className="w-full h-full object-cover"
-                />
+              <div className="relative w-56 h-56 mx-auto mb-6">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#1A2B44]/20 to-[#2A4464]/20 rounded-full blur-xl group-hover:blur-2xl transition-all duration-500" />
+                <div className="relative w-full h-full rounded-full overflow-hidden group-hover:scale-105 transition-transform duration-500">
+                  <img
+                    src={sofiaPhoto}
+                    alt="Sofía Alejandra Quiroga"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
-              <h3 className="text-2xl mb-2 text-[#1A2B44]">Sofía Alejandra Quiroga</h3>
+              <h3 className="text-2xl mb-2 text-[#1A2B44] font-semibold">Sofía Alejandra Quiroga</h3>
               <p className="text-gray-600 mb-4">Co-fundadora & Desarrolladora</p>
               <p className="text-gray-500 leading-relaxed">
                 Estudiante de ingeniería apasionada por crear soluciones tecnológicas innovadoras
@@ -76,20 +93,23 @@ export default function Nosotros() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="text-center"
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="text-center group"
             >
-              <div className="w-56 h-56 mx-auto mb-6 rounded-full overflow-hidden border-[#1A2B44]">
-                <img
-                  src={santiagoPhoto}
-                  alt="Santiago Cardona Nossa"
-                  className="w-full h-full object-cover"
-                />
+              <div className="relative w-56 h-56 mx-auto mb-6">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#1A2B44]/20 to-[#2A4464]/20 rounded-full blur-xl group-hover:blur-2xl transition-all duration-500" />
+                <div className="relative w-full h-full rounded-full overflow-hidden group-hover:scale-105 transition-transform duration-500">
+                  <img
+                    src={santiagoPhoto}
+                    alt="Santiago Cardona Nossa"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
-              <h3 className="text-2xl mb-2 text-[#1A2B44]">Santiago Cardona Nossa</h3>
+              <h3 className="text-2xl mb-2 text-[#1A2B44] font-semibold">Santiago Cardona Nossa</h3>
               <p className="text-gray-600 mb-4">Co-fundador & Desarrollador</p>
               <p className="text-gray-500 leading-relaxed">
                 Estudiante de ingeniería enfocado en desarrollar experiencias tecnológicas que
@@ -144,17 +164,21 @@ export default function Nosotros() {
             ].map((value, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-white p-8 rounded-2xl shadow-sm text-center"
+                transition={{ delay: i * 0.15, duration: 0.6 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="relative group"
               >
-                <div className="w-16 h-16 mx-auto mb-6 bg-[#1A2B44]/10 rounded-2xl flex items-center justify-center text-[#1A2B44]">
-                  {value.icon}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#1A2B44]/5 to-[#2A4464]/5 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative bg-white p-8 rounded-3xl shadow-sm border border-gray-100/50 hover:shadow-xl transition-all duration-300">
+                  <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-[#1A2B44]/10 to-[#2A4464]/10 rounded-2xl flex items-center justify-center text-[#1A2B44] group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                    {value.icon}
+                  </div>
+                  <h3 className="text-xl mb-3 text-[#1A2B44] font-semibold">{value.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{value.description}</p>
                 </div>
-                <h3 className="text-xl mb-3 text-[#1A2B44]">{value.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{value.description}</p>
               </motion.div>
             ))}
           </div>

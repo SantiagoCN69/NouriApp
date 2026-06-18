@@ -10,46 +10,69 @@ interface NavbarProps {
 
 export default function Navbar({ onOpenPricing }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
 
   return (
-    <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-3">
-          <div className="h-10 w-32 scale-y-[-1] [&_path]:!fill-[#1A2B44]">
+    <nav className="fixed top-0 w-full bg-white/90 backdrop-blur-lg z-50 border-b border-gray-100/50">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between relative">
+        {/* Decorative element */}
+        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-32 h-32 bg-gradient-to-br from-[#1A2B44]/5 to-[#2A4464]/5 rounded-full blur-3xl -z-10" />
+        
+        <Link to="/" className="flex items-center gap-3 group">
+          <div className="h-10 w-32 scale-y-[-1] [&_path]:!fill-[#1A2B44] transition-transform group-hover:scale-110">
             <Negro />
           </div>
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex gap-6 items-center">
-          <a href="/#beneficios" className="text-gray-600 hover:text-[#1A2B44] transition">
-            Beneficios
-          </a>
-          <a href="/#como-funciona" className="text-gray-600 hover:text-[#1A2B44] transition">
-            Cómo funciona
-          </a>
-          <a href="/#caracteristicas" className="text-gray-600 hover:text-[#1A2B44] transition">
-            Características
-          </a>
-          <a href="/nosotros" className="text-gray-600 hover:text-[#1A2B44] transition">
-            Quiénes Somos
-          </a>
+        <div className="hidden md:flex gap-8 items-center">
+          {[
+            { href: "/#beneficios", text: "Beneficios" },
+            { href: "/#como-funciona", text: "Cómo funciona" },
+            { href: "/#caracteristicas", text: "Características" },
+            { href: "/nosotros", text: "Quiénes Somos" },
+          ].map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="relative text-gray-600 hover:text-[#1A2B44] transition-colors py-2 group"
+              onMouseEnter={() => setHoveredLink(link.href)}
+              onMouseLeave={() => setHoveredLink(null)}
+            >
+              {link.text}
+              <motion.span
+                initial={{ width: 0 }}
+                animate={{ width: hoveredLink === link.href ? "100%" : 0 }}
+                className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#1A2B44] to-[#2A4464] rounded-full"
+              />
+            </a>
+          ))}
           <button
             onClick={onOpenPricing}
-            className="text-gray-600 hover:text-[#1A2B44] transition"
+            className="relative text-gray-600 hover:text-[#1A2B44] transition-colors py-2 group"
+            onMouseEnter={() => setHoveredLink("pricing")}
+            onMouseLeave={() => setHoveredLink(null)}
           >
             Precios
+            <motion.span
+              initial={{ width: 0 }}
+              animate={{ width: hoveredLink === "pricing" ? "100%" : 0 }}
+              className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#1A2B44] to-[#2A4464] rounded-full"
+            />
           </button>
-          <button
+          <motion.button
             onClick={() =>
               alert(
                 "¡Gracias por tu interés! Por el momento la app no está disponible, pero puedes ver nuestra demo interactiva."
               )
             }
-            className="bg-[#1A2B44] text-white px-6 py-2.5 rounded-full hover:bg-[#2A3B54] transition"
+            className="relative bg-gradient-to-r from-[#1A2B44] to-[#2A4464] text-white px-6 py-2.5 rounded-full hover:shadow-lg hover:shadow-[#1A2B44]/25 transition-all overflow-hidden group"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            Descargar App
-          </button>
+            <span className="relative z-10">Descargar App</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#2A4464] to-[#1A2B44] opacity-0 group-hover:opacity-100 transition-opacity" />
+          </motion.button>
         </div>
 
         {/* Mobile Menu Button */}

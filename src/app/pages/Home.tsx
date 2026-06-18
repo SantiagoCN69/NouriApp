@@ -18,57 +18,111 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6">
-        <div className="max-w-7xl mx-auto">
+      <section className="pt-32 pb-20 px-6 relative overflow-hidden">
+        {/* Decorative background elements */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-[#1A2B44]/10 to-[#2A4464]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-[#1A2B44]/5 to-[#2A4464]/5 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2" />
+        
+        <div className="max-w-7xl mx-auto relative">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <div className="inline-block bg-[#1A2B44]/5 text-[#1A2B44] px-4 py-2 rounded-full mb-6">
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-[#1A2B44]/10 to-[#2A4464]/10 text-[#1A2B44] px-5 py-2.5 rounded-full mb-8 border border-[#1A2B44]/20"
+              >
+                <div className="w-2 h-2 bg-[#1A2B44] rounded-full animate-pulse" />
                 Gestión inteligente de alimentos
-              </div>
-              <h1 className="text-5xl lg:text-6xl mb-6 text-[#1A2B44] leading-tight">
-                Controla tu inventario, evita desperdicios y ahorra
+              </motion.div>
+              <h1 className="text-5xl lg:text-7xl mb-6 text-[#1A2B44] leading-tight font-semibold">
+                Controla tu inventario,{" "}
+                <span className="relative inline-block">
+                  evita desperdicios
+                  <svg className="absolute -bottom-2 left-0 w-full" height="8" viewBox="0 0 200 8" fill="none">
+                    <path d="M2 6C50 2 150 2 198 6" stroke="#2A4464" strokeWidth="3" strokeLinecap="round"/>
+                  </svg>
+                </span>
+                {" "}y ahorra
               </h1>
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+              <p className="text-xl text-gray-600 mb-10 leading-relaxed max-w-lg">
                 Una gestión inteligente de tus alimentos que te ayuda a reducir pérdidas,
                 optimizar compras y mejorar la organización de tu hogar.
               </p>
               <div className="flex gap-4 flex-wrap">
-                <button
+                <motion.button
                   onClick={() =>
                     alert(
                       "¡Gracias por tu interés! Por el momento la app no está disponible, pero puedes ver nuestra demo interactiva."
                     )
                   }
-                  className="bg-[#1A2B44] text-white px-8 py-4 rounded-full hover:bg-[#2A3B54] transition shadow-lg"
+                  className="relative bg-gradient-to-r from-[#1A2B44] to-[#2A4464] text-white px-8 py-4 rounded-full hover:shadow-xl hover:shadow-[#1A2B44]/30 transition-all overflow-hidden group"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  Comenzar gratis
-                </button>
-                <button
+                  <span className="relative z-10">Comenzar gratis</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#2A4464] to-[#1A2B44] opacity-0 group-hover:opacity-100 transition-opacity" />
+                </motion.button>
+                <motion.button
                   onClick={() =>
                     window.open(
                       "https://www.figma.com/proto/9NCls7dV0SlF1UO3k048IN/Nouri?node-id=418-3215&p=f&t=CpXlDIe1fWOoaMzr-1&scaling=scale-down&content-scaling=fixed&page-id=169%3A2&starting-point-node-id=418%3A3215",
                       "_blank"
                     )
                   }
-                  className="border-2 border-[#1A2B44] text-[#1A2B44] px-8 py-4 rounded-full hover:bg-[#1A2B44] hover:text-white transition"
+                  className="relative border-2 border-[#1A2B44] text-[#1A2B44] px-8 py-4 rounded-full hover:bg-[#1A2B44]/5 transition-all group overflow-hidden"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  Ver demo
-                </button>
+                  <span className="relative z-10 flex items-center gap-2">
+                    Ver demo
+                    <motion.span 
+                      animate={{ x: [0, 5, 0] }} 
+                      transition={{ duration: 1.5, repeat: Infinity }}
+                    >
+                      →
+                    </motion.span>
+                  </span>
+                </motion.button>
               </div>
 
+              {/* Stats */}
+          
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              initial={{ opacity: 0, scale: 0.9, rotate: -3 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
               className="relative flex justify-center"
             >
-              <img src="/04. Home.png" alt="Consumir pronto" className="hidden lg:block w-full max-w-xs rounded-3xl shadow-2xl" />
+              <div className="relative">
+                <div className="absolute -inset-4 bg-gradient-to-br from-[#1A2B44]/20 to-[#2A4464]/20 rounded-3xl blur-2xl" />
+                <img 
+                  src="/04. Home.png" 
+                  alt="Consumir pronto" 
+                  className="hidden lg:block w-full max-w-xs rounded-3xl shadow-2xl relative z-10 transform hover:scale-105 transition-transform duration-500" 
+                />
+                {/* Floating elements */}
+                <motion.div 
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -top-4 -right-4 bg-white p-3 rounded-2xl shadow-lg z-20"
+                >
+                  <RefrigeratorIcon size={24} className="text-[#1A2B44]" />
+                </motion.div>
+                <motion.div 
+                  animate={{ y: [0, 10, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -bottom-4 -left-4 bg-white p-3 rounded-2xl shadow-lg z-20"
+                >
+                  <BellIcon size={24} className="text-[#1A2B44]" />
+                </motion.div>
+              </div>
             </motion.div>
           </div>
         </div>
@@ -98,6 +152,9 @@ export default function Home() {
                 description:
                   "Las familias desperdician hasta el 40% de los alimentos que compran por olvido o mala gestión.",
                 color: "red",
+                gradient: "from-red-50 to-orange-50",
+                iconBg: "bg-red-100",
+                iconColor: "text-red-600",
               },
               {
                 icon: <DollarSignIcon size={32} />,
@@ -105,6 +162,9 @@ export default function Home() {
                 description:
                   "Se pierden cientos de dólares al año en comida que caduca antes de ser consumida.",
                 color: "orange",
+                gradient: "from-orange-50 to-yellow-50",
+                iconBg: "bg-orange-100",
+                iconColor: "text-orange-600",
               },
               {
                 icon: <LeafIcon size={32} />,
@@ -112,27 +172,29 @@ export default function Home() {
                 description:
                   "El desperdicio de alimentos contribuye significativamente a las emisiones de CO₂ y al cambio climático.",
                 color: "green",
+                gradient: "from-green-50 to-emerald-50",
+                iconBg: "bg-green-100",
+                iconColor: "text-green-600",
               },
             ].map((problem, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100"
+                transition={{ delay: i * 0.15, duration: 0.6 }}
+                whileHover={{ y: -8 }}
+                className="relative group"
               >
-                <div
-                  className={`w-16 h-16 bg-${problem.color}-50 rounded-2xl flex items-center justify-center text-${problem.color}-600 mb-6`}
-                  style={{
-                    backgroundColor: problem.color === "red" ? "#FEF2F2" : problem.color === "orange" ? "#FFF7ED" : "#F0FDF4",
-                    color: problem.color === "red" ? "#DC2626" : problem.color === "orange" ? "#EA580C" : "#16A34A",
-                  }}
-                >
-                  {problem.icon}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#1A2B44]/5 to-[#2A4464]/5 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className={`relative bg-gradient-to-br ${problem.gradient} p-8 rounded-3xl shadow-sm border border-gray-100/50 hover:shadow-lg transition-all duration-300`}>
+                  <div className={`absolute top-4 right-4 w-20 h-20 ${problem.iconBg} rounded-full blur-2xl opacity-50`} />
+                  <div className={`relative w-16 h-16 ${problem.iconBg} rounded-2xl flex items-center justify-center ${problem.iconColor} mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    {problem.icon}
+                  </div>
+                  <h3 className="text-xl mb-3 text-[#1A2B44] font-semibold">{problem.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{problem.description}</p>
                 </div>
-                <h3 className="text-xl mb-3 text-[#1A2B44]">{problem.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{problem.description}</p>
               </motion.div>
             ))}
           </div>
@@ -189,17 +251,22 @@ export default function Home() {
             ].map((benefit, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-gray-50 p-8 rounded-2xl hover:shadow-lg transition"
+                transition={{ delay: i * 0.15, duration: 0.6 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="relative group"
               >
-                <div className="w-16 h-16 bg-[#1A2B44]/10 rounded-2xl flex items-center justify-center text-[#1A2B44] mb-6">
-                  {benefit.icon}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#1A2B44]/5 to-[#2A4464]/5 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative bg-white p-8 rounded-3xl shadow-sm border border-gray-100/50 hover:shadow-xl transition-all duration-300 overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#1A2B44]/5 to-transparent rounded-full blur-2xl" />
+                  <div className="relative w-16 h-16 bg-gradient-to-br from-[#1A2B44]/10 to-[#2A4464]/10 rounded-2xl flex items-center justify-center text-[#1A2B44] mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                    {benefit.icon}
+                  </div>
+                  <h3 className="text-xl mb-3 text-[#1A2B44] font-semibold">{benefit.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
                 </div>
-                <h3 className="text-xl mb-3 text-[#1A2B44]">{benefit.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
               </motion.div>
             ))}
           </div>
@@ -219,7 +286,10 @@ export default function Home() {
             <p className="text-xl text-gray-600">Comienza a gestionar tu inventario en minutos</p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-12">
+          <div className="grid md:grid-cols-3 gap-12 relative">
+            {/* Connecting line */}
+            <div className="hidden md:block absolute top-10 left-1/6 right-1/6 h-0.5 bg-gradient-to-r from-transparent via-[#1A2B44]/30 to-transparent" />
+            
             {[
               {
                 step: "01",
@@ -242,16 +312,25 @@ export default function Home() {
             ].map((step, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}
-                className="text-center"
+                transition={{ delay: i * 0.2, duration: 0.6 }}
+                className="text-center relative"
               >
-                <div className="w-20 h-20 mx-auto mb-6 bg-[#1A2B44] text-white rounded-full flex items-center justify-center text-2xl shadow-lg">
-                  {step.step}
-                </div>
-                <h3 className="text-2xl mb-4 text-[#1A2B44]">{step.title}</h3>
+                <motion.div 
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.2 + 0.3, type: "spring", stiffness: 200 }}
+                  className="relative w-24 h-24 mx-auto mb-8"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#1A2B44] to-[#2A4464] rounded-full blur-md opacity-50" />
+                  <div className="relative w-full h-full bg-gradient-to-br from-[#1A2B44] to-[#2A4464] text-white rounded-full flex items-center justify-center text-2xl font-bold shadow-xl shadow-[#1A2B44]/30">
+                    {step.step}
+                  </div>
+                </motion.div>
+                <h3 className="text-2xl mb-4 text-[#1A2B44] font-semibold">{step.title}</h3>
                 <p className="text-gray-600 leading-relaxed">{step.description}</p>
               </motion.div>
             ))}
@@ -284,13 +363,17 @@ export default function Home() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="bg-gray-50 p-6 rounded-xl hover:shadow-md transition text-center"
+                transition={{ delay: i * 0.1, duration: 0.5 }}
+                whileHover={{ y: -8, rotate: 2 }}
+                className="relative group"
               >
-                <div className="w-12 h-12 mx-auto mb-4 bg-[#1A2B44]/10 rounded-full flex items-center justify-center text-[#1A2B44]">
-                  {feature.icon}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#1A2B44]/5 to-[#2A4464]/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="relative bg-gradient-to-br from-gray-50 to-white p-6 rounded-2xl hover:shadow-lg transition-all duration-300 border border-gray-100/50">
+                  <div className="w-14 h-14 mx-auto mb-4 bg-gradient-to-br from-[#1A2B44]/10 to-[#2A4464]/10 rounded-2xl flex items-center justify-center text-[#1A2B44] group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                    {feature.icon}
+                  </div>
+                  <h4 className="text-[#1A2B44] font-semibold text-center">{feature.title}</h4>
                 </div>
-                <h4 className="text-[#1A2B44]">{feature.title}</h4>
               </motion.div>
             ))}
           </div>
