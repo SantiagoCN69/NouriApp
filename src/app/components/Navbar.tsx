@@ -19,7 +19,7 @@ export default function Navbar({ onOpenPricing }: NavbarProps) {
         <div className="absolute left-0 top-1/2 -translate-y-1/2 w-32 h-32 bg-gradient-to-br from-[#1A2B44]/5 to-[#2A4464]/5 rounded-full blur-3xl -z-10" />
         
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="h-10 w-32 scale-y-[-1] [&_path]:!fill-[#1A2B44] transition-transform group-hover:scale-110">
+          <div className="h-10 w-32 scale-y-[-1] [&_path]:!fill-[#1A2B44] transition-transform">
             <Negro />
           </div>
         </Link>
