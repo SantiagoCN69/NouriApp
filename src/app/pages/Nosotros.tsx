@@ -60,7 +60,7 @@ export default function Nosotros() {
               transition={{ delay: 0.1 }}
               className="text-center"
             >
-              <div className="w-56 h-56 mx-auto mb-6 rounded-full overflow-hidden border-4 border-[#1A2B44] shadow-2xl">
+              <div className="w-56 h-56 mx-auto mb-6 rounded-full overflow-hidden border-[#1A2B44]">
                 <img
                   src={sofiaPhoto}
                   alt="Sofía Alejandra Quiroga"
@@ -82,7 +82,7 @@ export default function Nosotros() {
               transition={{ delay: 0.2 }}
               className="text-center"
             >
-              <div className="w-56 h-56 mx-auto mb-6 rounded-full overflow-hidden border-4 border-[#1A2B44] shadow-2xl">
+              <div className="w-56 h-56 mx-auto mb-6 rounded-full overflow-hidden border-[#1A2B44]">
                 <img
                   src={santiagoPhoto}
                   alt="Santiago Cardona Nossa"
