@@ -56,7 +56,7 @@ export default function Contacto() {
                       href="mailto:hola@nouri.app"
                       className={`${isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-[#1A2B44]'} transition`}
                     >
-                      hola@nouri.app
+                      scardonan@ut.edu.co
                     </a>
                   </div>
                 </div>
