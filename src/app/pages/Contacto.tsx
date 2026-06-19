@@ -57,6 +57,8 @@ export default function Contacto() {
                       className={`${isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-[#1A2B44]'} transition`}
                     >
                       scardonan@ut.edu.co
+                      <br />
+                      squirogav@ut.edu.co
                     </a>
                   </div>
                 </div>
@@ -71,7 +73,9 @@ export default function Contacto() {
                       href="mailto:soporte@nouri.app"
                       className={`${isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-[#1A2B44]'} transition`}
                     >
-                      soporte@nouri.app
+                      scardonan@ut.edu.co
+                      <br />
+                      squirogav@ut.edu.co
                     </a>
                   </div>
                 </div>
