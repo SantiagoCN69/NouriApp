@@ -1,21 +1,23 @@
 import { motion } from "motion/react";
 import { MailIcon, MessageSquareIcon, SendIcon } from "lucide-react";
 import { useForm, ValidationError } from '@formspree/react';
+import { useTheme } from "../context/ThemeContext";
 
 export default function Contacto() {
   const [state, handleSubmit] = useForm("xpqbkolj");
+  const { isDarkMode } = useTheme();
 
   return (
     <div className="pt-18">
       {/* Hero */}
-      <section className="py-20 px-6 bg-gradient-to-br from-[#1A2B44] to-[#2A4464]">
+      <section className={`py-20 px-6 ${isDarkMode ? 'bg-gradient-to-br from-[#4A6B94] to-[#6A8CB4]' : 'bg-gradient-to-br from-[#1A2B44] to-[#2A4464]'}`}>
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="w-20 h-20 mx-auto mb-6 bg-white/10 rounded-full flex items-center justify-center">
+            <div className={`w-20 h-20 mx-auto mb-6 rounded-full flex items-center justify-center ${isDarkMode ? 'bg-white/20' : 'bg-white/10'}`}>
               <MessageSquareIcon className="text-white" size={40} />
             </div>
             <h1 className="text-5xl md:text-6xl mb-6 text-white leading-tight">Contáctanos</h1>
@@ -27,7 +29,7 @@ export default function Contacto() {
       </section>
 
       {/* Contenido */}
-      <section className="py-20 px-6 bg-white">
+      <section className={`py-20 px-6 ${isDarkMode ? 'bg-gray-950' : 'bg-white'}`}>
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Información */}
@@ -36,8 +38,8 @@ export default function Contacto() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl mb-6 text-[#1A2B44]">Hablemos</h2>
-              <p className="text-lg text-gray-600 leading-relaxed mb-8">
+              <h2 className={`text-3xl mb-6 ${isDarkMode ? 'text-white' : 'text-[#1A2B44]'}`}>Hablemos</h2>
+              <p className={`text-lg leading-relaxed mb-8 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                 Ya sea que tengas una pregunta, sugerencia o simplemente quieras saludarnos,
                 estaremos encantados de escucharte. Respondemos todos los mensajes lo más rápido
                 posible.
@@ -45,14 +47,14 @@ export default function Contacto() {
 
               <div className="space-y-6">
                 <div className="flex gap-4">
-                  <div className="w-12 h-12 bg-[#1A2B44]/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <MailIcon className="text-[#1A2B44]" size={24} />
+                  <div className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 ${isDarkMode ? 'bg-gray-800' : 'bg-[#1A2B44]/10'}`}>
+                    <MailIcon className={isDarkMode ? 'text-[#6A8CB4]' : 'text-[#1A2B44]'} size={24} />
                   </div>
                   <div>
-                    <h3 className="text-lg mb-1 text-[#1A2B44]">Email</h3>
+                    <h3 className={`text-lg mb-1 ${isDarkMode ? 'text-white' : 'text-[#1A2B44]'}`}>Email</h3>
                     <a
                       href="mailto:hola@nouri.app"
-                      className="text-gray-600 hover:text-[#1A2B44] transition"
+                      className={`${isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-[#1A2B44]'} transition`}
                     >
                       hola@nouri.app
                     </a>
@@ -60,14 +62,14 @@ export default function Contacto() {
                 </div>
 
                 <div className="flex gap-4">
-                  <div className="w-12 h-12 bg-[#1A2B44]/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <MessageSquareIcon className="text-[#1A2B44]" size={24} />
+                  <div className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 ${isDarkMode ? 'bg-gray-800' : 'bg-[#1A2B44]/10'}`}>
+                    <MessageSquareIcon className={isDarkMode ? 'text-[#6A8CB4]' : 'text-[#1A2B44]'} size={24} />
                   </div>
                   <div>
-                    <h3 className="text-lg mb-1 text-[#1A2B44]">Soporte</h3>
+                    <h3 className={`text-lg mb-1 ${isDarkMode ? 'text-white' : 'text-[#1A2B44]'}`}>Soporte</h3>
                     <a
                       href="mailto:soporte@nouri.app"
-                      className="text-gray-600 hover:text-[#1A2B44] transition"
+                      className={`${isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-[#1A2B44]'} transition`}
                     >
                       soporte@nouri.app
                     </a>
@@ -75,13 +77,13 @@ export default function Contacto() {
                 </div>
               </div>
 
-              <div className="mt-12 p-8 bg-gray-50 rounded-2xl">
-                <h3 className="text-xl mb-4 text-[#1A2B44]">Preguntas frecuentes</h3>
-                <p className="text-gray-600 leading-relaxed">
+              <div className={`mt-12 p-8 rounded-2xl ${isDarkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
+                <h3 className={`text-xl mb-4 ${isDarkMode ? 'text-white' : 'text-[#1A2B44]'}`}>Preguntas frecuentes</h3>
+                <p className={`leading-relaxed ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                   Antes de contactarnos, revisa nuestras preguntas frecuentes. Probablemente
                   encuentres la respuesta a tu duda de manera inmediata.
                 </p>
-                <button className="mt-6 text-[#1A2B44] hover:underline">
+                <button className={`mt-6 ${isDarkMode ? 'text-[#6A8CB4] hover:text-[#8AACD4]' : 'text-[#1A2B44] hover:text-[#2A3B54]'} hover:underline`}>
                   Ver preguntas frecuentes →
                 </button>
               </div>
@@ -100,27 +102,27 @@ export default function Contacto() {
                   animate={{ opacity: 1, y: 0 }}
                   className="text-center w-full"
                 >
-                  <div className="w-20 h-20 mx-auto mb-6 bg-green-100 rounded-full flex items-center justify-center">
-                    <SendIcon className="text-green-600" size={40} />
+                  <div className={`w-20 h-20 mx-auto mb-6 rounded-full flex items-center justify-center ${isDarkMode ? 'bg-gray-700' : 'bg-green-100'}`}>
+                    <SendIcon className={isDarkMode ? 'text-[#6A8CB4]' : 'text-green-600'} size={40} />
                   </div>
-                  <h3 className="text-2xl font-semibold text-green-600 mb-4">
+                  <h3 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-[#6A8CB4]' : 'text-green-600'}`}>
                     ¡Mensaje enviado con éxito!
                   </h3>
-                  <p className="text-gray-600">
+                  <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                     Gracias por contactarnos. Te responderemos lo más pronto posible.
                   </p>
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6 w-full">
                   <div>
-                    <label htmlFor="name" className="block text-gray-700 mb-2">
+                    <label htmlFor="name" className={`block mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                       Nombre
                     </label>
                     <input
                       type="text"
                       id="name"
                       name="name"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1A2B44] focus:border-transparent transition"
+                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:border-transparent transition ${isDarkMode ? 'bg-gray-800 border-gray-700 text-white focus:ring-[#6A8CB4]' : 'border-gray-300 focus:ring-[#1A2B44]'}`}
                       placeholder="Tu nombre"
                       required
                     />
@@ -134,7 +136,7 @@ export default function Contacto() {
                       type="email"
                       id="email"
                       name="email"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1A2B44] focus:border-transparent transition"
+                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:border-transparent transition ${isDarkMode ? 'bg-gray-800 border-gray-700 text-white focus:ring-[#6A8CB4]' : 'border-gray-300 focus:ring-[#1A2B44]'}`}
                       placeholder="tu@email.com"
                       required
                     />
@@ -154,7 +156,7 @@ export default function Contacto() {
                       type="text"
                       id="subject"
                       name="subject"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1A2B44] focus:border-transparent transition"
+                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:border-transparent transition ${isDarkMode ? 'bg-gray-800 border-gray-700 text-white focus:ring-[#6A8CB4]' : 'border-gray-300 focus:ring-[#1A2B44]'}`}
                       placeholder="¿En qué podemos ayudarte?"
                       required
                     />
@@ -183,7 +185,7 @@ export default function Contacto() {
                   <button
                     type="submit"
                     disabled={state.submitting}
-                    className="w-full bg-[#1A2B44] text-white px-8 py-4 rounded-full hover:bg-[#2A3B54] transition shadow-lg flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className={`w-full text-white px-8 py-4 rounded-full transition shadow-lg flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed ${isDarkMode ? 'bg-gradient-to-r from-[#4A6B94] to-[#6A8CB4] hover:shadow-[#4A6B94]/30' : 'bg-[#1A2B44] hover:bg-[#2A3B54]'}`}
                   >
                     <SendIcon size={20} />
                     {state.submitting ? "Enviando..." : "Enviar mensaje"}
@@ -196,17 +198,17 @@ export default function Contacto() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-6 bg-gray-50">
+      <section className={`py-20 px-6 ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl mb-6 text-[#1A2B44]">
+            <h2 className={`text-3xl md:text-4xl mb-6 ${isDarkMode ? 'text-white' : 'text-[#1A2B44]'}`}>
               ¿Aún no has probado NOURI?
             </h2>
-            <p className="text-lg text-gray-600 mb-8">
+            <p className={`text-lg mb-8 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
               Descubre cómo podemos ayudarte a gestionar tu inventario de alimentos
             </p>
             <button
@@ -216,7 +218,7 @@ export default function Contacto() {
                   "_blank"
                 )
               }
-              className="bg-[#1A2B44] text-white px-8 py-4 rounded-full hover:bg-[#2A3B54] transition shadow-lg"
+              className={`px-8 py-4 rounded-full transition shadow-lg ${isDarkMode ? 'bg-gradient-to-r from-[#4A6B94] to-[#6A8CB4] hover:shadow-[#4A6B94]/30 text-white' : 'bg-[#1A2B44] text-white hover:bg-[#2A3B54]'}`}
             >
               Ver demo interactiva
             </button>
