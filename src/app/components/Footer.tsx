@@ -20,17 +20,6 @@ export default function Footer() {
             <p className={`leading-relaxed mb-6 ${isDarkMode ? 'text-gray-300' : 'text-white/70'}`}>
               Gestión inteligente de inventario de alimentos para un hogar más eficiente y sostenible.
             </p>
-            <div className="flex gap-2">
-              <div className={`w-10 h-10 rounded-full flex items-center justify-center transition cursor-pointer ${isDarkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-white/10 hover:bg-white/20'}`}>
-                <span className="text-sm">𝕏</span>
-              </div>
-              <div className={`w-10 h-10 rounded-full flex items-center justify-center transition cursor-pointer ${isDarkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-white/10 hover:bg-white/20'}`}>
-                <span className="text-sm">in</span>
-              </div>
-              <div className={`w-10 h-10 rounded-full flex items-center justify-center transition cursor-pointer ${isDarkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-white/10 hover:bg-white/20'}`}>
-                <span className="text-sm">📧</span>
-              </div>
-            </div>
           </div>
           <div>
             <h4 className={`mb-6 font-semibold ${isDarkMode ? 'text-white' : 'text-white'}`}>Producto</h4>
