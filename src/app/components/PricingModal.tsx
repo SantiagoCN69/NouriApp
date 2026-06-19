@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "motion/react";
 import { XIcon, CheckIcon } from "lucide-react";
 import { useState } from "react";
+import { useTheme } from "../context/ThemeContext";
 
 interface PricingModalProps {
   isOpen: boolean;
@@ -9,6 +10,7 @@ interface PricingModalProps {
 
 export default function PricingModal({ isOpen, onClose }: PricingModalProps) {
   const [selectedPlan, setSelectedPlan] = useState<"free" | "premium">("free");
+  const { isDarkMode } = useTheme();
 
   const plans = {
     free: {
@@ -59,19 +61,19 @@ export default function PricingModal({ isOpen, onClose }: PricingModalProps) {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: "spring", duration: 0.5 }}
-              className="bg-white rounded-3xl shadow-2xl max-w-5xl w-full max-h-[95vh] md:max-h-[90vh] overflow-y-auto pointer-events-auto relative"
+              className={`rounded-3xl shadow-2xl max-w-5xl w-full max-h-[95vh] md:max-h-[90vh] overflow-y-auto pointer-events-auto relative ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}
             >
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 flex items-center justify-center rounded-full bg-white/80 backdrop-blur-sm hover:bg-gray-100 transition z-50 shadow-sm border border-gray-100"
+                className={`absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 flex items-center justify-center rounded-full backdrop-blur-sm transition z-50 shadow-sm border ${isDarkMode ? 'bg-gray-700/80 hover:bg-gray-600 border-gray-600' : 'bg-white/80 hover:bg-gray-100 border-gray-100'}`}
               >
-                <XIcon size={24} className="text-gray-600" />
+                <XIcon size={24} className={isDarkMode ? 'text-gray-300' : 'text-gray-600'} />
               </button>
 
               <div className="p-6 md:p-12">
                 <div className="text-center mb-8 md:mb-12 pt-4">
-                  <h2 className="text-3xl md:text-4xl mb-3 md:mb-4 text-[#1A2B44]">Elige tu plan</h2>
-                  <p className="text-lg md:text-xl text-gray-600">
+                  <h2 className={`text-3xl md:text-4xl mb-3 md:mb-4 ${isDarkMode ? 'text-white' : 'text-[#1A2B44]'}`}>Elige tu plan</h2>
+                  <p className={`text-lg md:text-xl ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                     Selecciona el plan que mejor se adapte a tus necesidades
                   </p>
                 </div>
@@ -83,24 +85,28 @@ export default function PricingModal({ isOpen, onClose }: PricingModalProps) {
                       onClick={() => setSelectedPlan("free")}
                       className={`relative p-8 rounded-2xl border-2 cursor-pointer transition flex flex-col ${
                         selectedPlan === "free"
-                          ? "border-[#1A2B44] bg-[#1A2B44]/5"
-                          : "border-gray-200 hover:border-gray-300"
+                          ? isDarkMode
+                            ? "border-[#6A8CB4] bg-[#6A8CB4]/10"
+                            : "border-[#1A2B44] bg-[#1A2B44]/5"
+                          : isDarkMode
+                            ? "border-gray-700 hover:border-gray-600"
+                            : "border-gray-200 hover:border-gray-300"
                       }`}
                     >
                       {selectedPlan === "free" && (
-                        <div className="absolute top-4 right-4 w-6 h-6 bg-[#1A2B44] rounded-full flex items-center justify-center">
+                        <div className={`absolute top-4 right-4 w-6 h-6 rounded-full flex items-center justify-center ${isDarkMode ? 'bg-[#6A8CB4]' : 'bg-[#1A2B44]'}`}>
                           <CheckIcon size={16} className="text-white" />
                         </div>
                       )}
                       <div className="mb-6">
-                        <h3 className="text-2xl mb-2 text-[#1A2B44]">
+                        <h3 className={`text-2xl mb-2 ${isDarkMode ? 'text-white' : 'text-[#1A2B44]'}`}>
                           {plans.free.name}
                         </h3>
                         <div className="flex items-baseline gap-2">
-                          <span className="text-4xl text-[#1A2B44]">
+                          <span className={`text-4xl ${isDarkMode ? 'text-white' : 'text-[#1A2B44]'}`}>
                             {plans.free.price}
                           </span>
-                          <span className="text-gray-600">{plans.free.period}</span>
+                          <span className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>{plans.free.period}</span>
                         </div>
                       </div>
                       <ul className="space-y-3 flex-1">
@@ -108,9 +114,9 @@ export default function PricingModal({ isOpen, onClose }: PricingModalProps) {
                           <li key={i} className="flex gap-3">
                             <CheckIcon
                               size={20}
-                              className="text-[#1A2B44] flex-shrink-0 mt-0.5"
+                              className={isDarkMode ? 'text-[#6A8CB4] flex-shrink-0 mt-0.5' : 'text-[#1A2B44] flex-shrink-0 mt-0.5'}
                             />
-                            <span className="text-gray-600">{feature}</span>
+                            <span className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>{feature}</span>
                           </li>
                         ))}
                       </ul>
@@ -122,8 +128,12 @@ export default function PricingModal({ isOpen, onClose }: PricingModalProps) {
                         }
                         className={`w-full mt-8 py-3 rounded-full transition ${
                           selectedPlan === "free"
-                            ? "bg-[#1A2B44] text-white"
-                            : "bg-gray-100 text-gray-800 hover:bg-gray-200"
+                            ? isDarkMode
+                              ? 'bg-gradient-to-r from-[#4A6B94] to-[#6A8CB4] text-white'
+                              : 'bg-[#1A2B44] text-white'
+                            : isDarkMode
+                              ? 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                              : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
                         }`}
                       >
                         Comenzar gratis
@@ -136,29 +146,33 @@ export default function PricingModal({ isOpen, onClose }: PricingModalProps) {
                       onClick={() => setSelectedPlan("premium")}
                       className={`relative p-8 rounded-2xl border-2 cursor-pointer transition flex flex-col ${
                         selectedPlan === "premium"
-                          ? "border-[#1A2B44] bg-[#1A2B44]/5"
-                          : "border-gray-200 hover:border-gray-300"
+                          ? isDarkMode
+                            ? "border-[#6A8CB4] bg-[#6A8CB4]/10"
+                            : "border-[#1A2B44] bg-[#1A2B44]/5"
+                          : isDarkMode
+                            ? "border-gray-700 hover:border-gray-600"
+                            : "border-gray-200 hover:border-gray-300"
                       }`}
                     >
-                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#1A2B44] text-white px-4 py-1 rounded-full text-sm">
+                      <div className={`absolute -top-3 left-1/2 -translate-x-1/2 text-white px-4 py-1 rounded-full text-sm ${isDarkMode ? 'bg-gradient-to-r from-[#4A6B94] to-[#6A8CB4]' : 'bg-[#1A2B44]'}`}>
                         Más popular
                       </div>
                       {selectedPlan === "premium" && (
-                        <div className="absolute top-4 right-4 w-6 h-6 bg-[#1A2B44] rounded-full flex items-center justify-center">
+                        <div className={`absolute top-4 right-4 w-6 h-6 rounded-full flex items-center justify-center ${isDarkMode ? 'bg-[#6A8CB4]' : 'bg-[#1A2B44]'}`}>
                           <CheckIcon size={16} className="text-white" />
                         </div>
                       )}
                       <div className="mb-6">
-                        <h3 className="text-2xl mb-2 text-[#1A2B44]">
+                        <h3 className={`text-2xl mb-2 ${isDarkMode ? 'text-white' : 'text-[#1A2B44]'}`}>
                           {plans.premium.name}
                         </h3>
                         <div className="flex items-baseline gap-2">
-                          <span className="text-4xl text-[#1A2B44]">
+                          <span className={`text-4xl ${isDarkMode ? 'text-white' : 'text-[#1A2B44]'}`}>
                             {plans.premium.price}
                           </span>
-                          <span className="text-gray-600">{plans.premium.period}</span>
+                          <span className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>{plans.premium.period}</span>
                         </div>
-                        <p className="text-sm text-gray-500 mt-1">
+                        <p className={`text-sm mt-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>
                           {plans.premium.priceUSD}
                         </p>
                       </div>
@@ -167,9 +181,9 @@ export default function PricingModal({ isOpen, onClose }: PricingModalProps) {
                           <li key={i} className="flex gap-3">
                             <CheckIcon
                               size={20}
-                              className="text-[#1A2B44] flex-shrink-0 mt-0.5"
+                              className={isDarkMode ? 'text-[#6A8CB4] flex-shrink-0 mt-0.5' : 'text-[#1A2B44] flex-shrink-0 mt-0.5'}
                             />
-                            <span className="text-gray-600">{feature}</span>
+                            <span className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>{feature}</span>
                           </li>
                         ))}
                       </ul>
@@ -181,8 +195,12 @@ export default function PricingModal({ isOpen, onClose }: PricingModalProps) {
                         }
                         className={`w-full mt-8 py-3 rounded-full transition ${
                           selectedPlan === "premium"
-                            ? "bg-[#1A2B44] text-white"
-                            : "bg-gray-100 text-gray-800 hover:bg-gray-200"
+                            ? isDarkMode
+                              ? 'bg-gradient-to-r from-[#4A6B94] to-[#6A8CB4] text-white'
+                              : 'bg-[#1A2B44] text-white'
+                            : isDarkMode
+                              ? 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                              : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
                         }`}
                       >
                         Obtener Premium
