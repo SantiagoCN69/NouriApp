@@ -87,7 +87,7 @@ export default function Nosotros() {
               <h3 className="text-2xl mb-2 text-[#1A2B44] font-semibold">Sofía Alejandra Quiroga</h3>
               <p className="text-gray-600 mb-4">Co-fundadora & Desarrolladora</p>
               <p className="text-gray-500 leading-relaxed">
-                Estudiante de ingeniería apasionada por crear soluciones tecnológicas innovadoras
+                Estudiante de diseño interactivo y multimedia de la universidad del tolima, apasionada por crear soluciones tecnológicas innovadoras
                 que ayuden a las personas a vivir de forma más sostenible y eficiente.
               </p>
             </motion.div>
@@ -112,7 +112,7 @@ export default function Nosotros() {
               <h3 className="text-2xl mb-2 text-[#1A2B44] font-semibold">Santiago Cardona Nossa</h3>
               <p className="text-gray-600 mb-4">Co-fundador & Desarrollador</p>
               <p className="text-gray-500 leading-relaxed">
-                Estudiante de ingeniería enfocado en desarrollar experiencias tecnológicas que
+                Estudiante de diseño interactivo y multimedia de la universidad del tolima, enfocado en desarrollar experiencias tecnológicas que
                 resuelvan problemas reales y generen un impacto positivo en la sociedad.
               </p>
             </motion.div>
