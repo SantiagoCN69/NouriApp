@@ -105,12 +105,12 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
               className="relative flex justify-center"
             >
-              <div className="relative">
+              <div className="relative hidden lg:block">
                 <div className="absolute -inset-4 bg-gradient-to-br from-[#1A2B44]/20 to-[#2A4464]/20 rounded-3xl blur-2xl" />
                 <img 
                   src="/04. Home.png" 
                   alt="Consumir pronto" 
-                  className="hidden lg:block w-full max-w-xs rounded-3xl shadow-2xl relative z-10 transform hover:scale-105 transition-transform duration-500" 
+                  className="w-full max-w-xs rounded-3xl shadow-2xl relative z-10 transform hover:scale-105 transition-transform duration-500" 
                 />
                 {/* Floating elements */}
                 <motion.div 
